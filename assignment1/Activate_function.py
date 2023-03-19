@@ -52,4 +52,7 @@ class SigmoidLayer():
         dYdX = self.__sigmoid__(self.X) * (1.0 - self.__sigmoid__(self.X))
         Current_Gradient = Current_Gradient * dYdX
         return Current_Gradient
+    
+        
+        
         
