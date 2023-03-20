@@ -20,7 +20,7 @@ class FullyConnectedLayer():
         if (bias):
             self.b = np.zeros(shape=(1, output_dim), dtype=np.float32)
     
-    def init_paramter(self):
+    def init_parameter(self):
         self.W = np.random.normal(loc=0.0, scale=1.0, size=(self.hidden_dim, self.output_dim))
         
     # forward

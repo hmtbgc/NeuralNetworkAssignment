@@ -21,7 +21,7 @@ class ReLULayer():
     
     def backward(self, Upstream_Gradient):
         Current_Gradient = Upstream_Gradient
-        Current_Gradient[Upstream_Gradient < 0] = 0
+        Current_Gradient[self.X < 0] = 0
         return Current_Gradient
     
     
@@ -53,6 +53,28 @@ class SigmoidLayer():
         Current_Gradient = Current_Gradient * dYdX
         return Current_Gradient
     
-        
+
+class SoftmaxLayer():
+    
+    """
+    
+        Y_i = exp(X_i - max(X_k)) / sum_j(exp(X_j - max(X_k)))
+    
+    """
+    
+    def __init__(self):
+        pass
+    
+    def forward(self, X):
+        # Only forward will be implemented
+        X_max = np.max(X, axis=1, keepdims=True)
+        X = X - X_max
+        exp_sum = np.sum(np.exp(X), axis=1, keepdims=True)
+        X = np.exp(X) / exp_sum
+        return X
+    
+    def backward(self, Upstream_Gradient):
+        # use CrossEntropyLoss to backward instead
+        pass
         
         

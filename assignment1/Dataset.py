@@ -15,7 +15,7 @@ class Mnist():
     def read_image(self, path):
         with gzip.open(path, "rb") as f:
             magic, num, rows, cols = unpack(">4I", f.read(16))
-            image = np.frombuffer(f.read(), dtype = np.uint8).reshape(num, 28 * 28)
+            image = np.frombuffer(f.read(), dtype = np.uint8).reshape(num, rows, cols)
         return image
     
     def read_label(self, path):
