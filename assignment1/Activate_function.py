@@ -38,18 +38,18 @@ class SigmoidLayer():
     
     # forward 
     
-    def __sigmoid__(self, X):
+    def sigmoid(self, X):
         return 1.0 / (1.0 + np.exp(-X))
     
     def forward(self, X):
         self.X = X
-        return self.__sigmoid__(X)
+        return self.sigmoid(X)
     
     # backward
     
     def backward(self, Upstream_Gradient):
         Current_Gradient = Upstream_Gradient
-        dYdX = self.__sigmoid__(self.X) * (1.0 - self.__sigmoid__(self.X))
+        dYdX = self.sigmoid(self.X) * (1.0 - self.sigmoid(self.X))
         Current_Gradient = Current_Gradient * dYdX
         return Current_Gradient
     
