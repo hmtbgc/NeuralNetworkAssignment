@@ -41,11 +41,31 @@ class FullyConnectedLayer():
             self.db = np.sum(Upstream_Gradient, axis=0)
         Current_Graident = np.matmul(Upstream_Gradient, self.W.T)
         return Current_Graident
-    
-    # step
-    
-    def step(self, lr):
-        self.W -= lr * self.dW
+        
+    def get_params(self):
         if (self.bias):
-            self.b -= lr * self.db
+            return [self.W, self.b]
+        return [self.W]
+    
+    def get_grads(self):
+        if (self.bias):
+            return [self.dW, self.db]
+        return [self.dW]
+    
+    def save_model(self, name):
+        if (self.bias):
+            np.savez(name, hid=self.hidden_dim, out=self.output_dim, W=self.W, b=self.b)
+        else:
+            np.savez(name, hid=self.hidden_dim, out=self.output_dim, W=self.W)
+            
+    def load_model(self, path):
+        loaded_model = np.load(path)
+        self.hidden_dim = loaded_model["hid"]
+        self.output_dim = loaded_model["out"]
+        self.W = loaded_model["W"]
+        if (self.bias):
+            self.b = loaded_model["b"]
+         
+            
+        
         

@@ -8,7 +8,7 @@ import cupy as cp
 input_dim = 784
 hidden_dim = 128
 output_dim = 10
-batch_size = 256
+batch_size = 512
 Epoch = 100
 lr = 0.1
 dataset_root = "../data/mnist"

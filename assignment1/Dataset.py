@@ -28,7 +28,7 @@ class Mnist():
         image = image.astype(np.float32) / 255.0
         return image
     
-    def load(self, normalized=True):
+    def load(self, rate, normalized=True):
         train_image = self.read_image(os.path.join(self.root, self.train_image_name))
         train_label = self.read_label(os.path.join(self.root, self.train_label_name))
         test_image = self.read_image(os.path.join(self.root, self.test_image_name))
@@ -36,8 +36,13 @@ class Mnist():
         if (normalized):
             train_image = self.normalize(train_image)
             test_image = self.normalize(test_image)
-        return train_image, train_label, test_image, test_label
-        
+        tot_idx = np.arange(train_image.shape[0])
+        np.random.shuffle(tot_idx)
+        train_number = int(rate * tot_idx.shape[0])
+        train_image, valid_image = train_image[:train_number], train_image[train_number:]
+        train_label, valid_label = train_label[:train_number], train_label[train_number:]
+        return train_image, train_label, valid_image, valid_label, test_image, test_label
+
         
         
         

@@ -42,10 +42,20 @@ class FullyConnectedLayer():
         Current_Graident = cp.matmul(Upstream_Gradient, self.W.T)
         return Current_Graident
     
-    # step
+    # # step
     
-    def step(self, lr):
-        self.W -= lr * self.dW
-        if (self.bias):
-            self.b -= lr * self.db
+    # def step(self, lr):
+    #     self.W -= lr * self.dW
+    #     if (self.bias):
+    #         self.b -= lr * self.db
+    
+    def get_params(self):
+        if self.bias:
+            return [self.W, self.b]
+        return [self.W]
+    
+    def get_grads(self):
+        if self.bias:
+            return [self.dW, self.db]
+        return [self.dW]
         

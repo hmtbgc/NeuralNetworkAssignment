@@ -27,3 +27,4 @@ class CrossEntropyLoss():
         label_onehot[np.arange(self.n), self.label] = 1.0
         Current_Gradient = (self.X - label_onehot) / self.n
         return Current_Gradient
+    
