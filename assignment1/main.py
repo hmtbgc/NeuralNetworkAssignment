@@ -4,6 +4,7 @@ from Model import FullyConnectedLayer
 from Loss_function import CrossEntropyLoss
 from Dataloader import DataLoader
 from Optimizer import SGD
+from Regularization import L2
 import numpy as np
 import os
 
@@ -13,6 +14,7 @@ output_dim = 10
 batch_size = 30
 Epoch = 30
 lr = 0.1
+lam = 0.01
 train_rate = 0.8
 valid_freq = 5
 dataset_root = "./data/mnist"
@@ -87,7 +89,7 @@ model = Model(input_dim, hidden_dim, output_dim)
 loss_function = CrossEntropyLoss()
 optimizer = SGD(lr)
 softmax = SoftmaxLayer()
-
+regularization = L2(lam)
 best_valid_acc = 0.0
 
 for epoch in range(Epoch):
@@ -103,6 +105,12 @@ for epoch in range(Epoch):
         gradient = model.backward(gradient)
         # model.step(lr)
         params, grads = model.get_params(), model.get_grads()
+        # for i in range(len(params)):
+        #     print(f"params[{i}].shape: {params[i].shape}")
+        #     print(f"grads[{i}].shape: {grads[i].shape}")
+        regularization_grads = regularization.get_grads(model)
+        for grad, regularization_grad in zip(grads, regularization_grads):
+            grad += regularization_grad
         optimizer.step(params, grads)
     if (epoch > 0 and epoch % valid_freq == 0):
         valid_acc = eval(valid_dataloader, model)

@@ -38,7 +38,7 @@ class FullyConnectedLayer():
     def backward(self, Upstream_Gradient):
         self.dW = np.matmul(self.X.T, Upstream_Gradient)
         if (self.bias):
-            self.db = np.sum(Upstream_Gradient, axis=0)
+            self.db = np.sum(Upstream_Gradient, axis=0, keepdims=True)
         Current_Graident = np.matmul(Upstream_Gradient, self.W.T)
         return Current_Graident
         
