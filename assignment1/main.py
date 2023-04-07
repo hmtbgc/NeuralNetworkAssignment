@@ -94,11 +94,11 @@ best_valid_acc = 0.0
 
 for epoch in range(Epoch):
     batch_num = 0
-    loss = 0.0
+    loss = []
     for x_train, y_train in train_dataloader.get_batch():
         x_train = x_train.reshape(-1, 28 * 28)
         model_forward_result = model.forward(x_train)
-        loss += loss_function.forward(model_forward_result, y_train)
+        loss.append(loss_function.forward(model_forward_result, y_train))
         # print(f"epoch {epoch}, batch {batch_num}, loss: {loss:.4f}")
         batch_num += 1
         gradient = loss_function.backward()
@@ -117,7 +117,7 @@ for epoch in range(Epoch):
         if (valid_acc > best_valid_acc):
             best_valid_acc = valid_acc
             model.save_model("./model_params/Model")
-    print(f"epoch {epoch}, loss: {loss:.4f}, best_valid_acc: {best_valid_acc: .4f}")
+    print(f"epoch {epoch}, loss: {np.mean(loss):.4f}, best_valid_acc: {best_valid_acc: .4f}")
 
 print("testing...")
 test_model = Model(0, 0, 0)

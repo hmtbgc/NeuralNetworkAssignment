@@ -5,3 +5,6 @@ class SGD():
     def step(self, params, grads):
         for param, grad in zip(params, grads):
             param -= self.lr * grad
+    
+    def update_lr(self, updated_lr):
+        self.lr = updated_lr
