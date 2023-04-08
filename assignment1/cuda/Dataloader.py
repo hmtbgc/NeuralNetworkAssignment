@@ -12,9 +12,11 @@ class DataLoader():
             self.data = self.data[permutation]
             self.label = self.label[permutation] 
     
+    def __len__(self):
+        return (self.length - 1) // self.batch_size + 1
     
     def get_batch(self):
-        for i in range((self.length - 1) // self.batch_size + 1):
+        for i in range(len(self)):
             begin = i * self.batch_size
             end = min((i + 1) * self.batch_size, self.length)
             yield self.data[begin : end], self.label[begin : end]

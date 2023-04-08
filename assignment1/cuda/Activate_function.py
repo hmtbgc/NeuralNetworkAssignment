@@ -39,7 +39,7 @@ class SigmoidLayer():
     # forward 
     
     def sigmoid(self, X):
-        return 1.0 / (1.0 + cp.exp(-X))
+        return 1.0 / (1.0 + np.exp(-X))
     
     def forward(self, X):
         self.X = X
