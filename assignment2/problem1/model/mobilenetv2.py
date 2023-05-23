@@ -42,7 +42,7 @@ class MobileNetV2(nn.Module):
             nn.ReLU6(inplace=True),
         )
         self.layer = nn.Sequential(
-            self.make_layer(32, 16, 1, 1, 1),
+            self.make_layer(32, 16, t, 1, 1),
             self.make_layer(16, 24, t, 2, 2),
             self.make_layer(24, 32, t, 2, 3),
             self.make_layer(32, 64, t, 2, 4),
