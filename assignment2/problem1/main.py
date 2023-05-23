@@ -13,7 +13,7 @@ from torch.optim.lr_scheduler import _LRScheduler
 from torch.utils.tensorboard import SummaryWriter
 import argparse
 import configs
-from model.vgg16 import VGG16
+from model import VGG16, ResNet18
 
 class WarmUpLR(_LRScheduler):
     def __init__(self, optimizer, total_iters, last_epoch=-1):
@@ -103,8 +103,12 @@ if __name__ == "__main__":
         model = VGG16(num_class=configs.num_class).to(device)
         test_model = VGG16(num_class=configs.num_class).to(device)
         model_name = "VGG16"
+    elif args.net == "resnet18":
+        model = ResNet18(num_class=configs.num_class).to(device)
+        test_model = ResNet18(num_class=configs.num_class).to(device)
+        model_name = "ResNet18"
     else:
-        raise NotImplementedError(f"{args.net} is not implemented! Please try vgg16")
+        raise NotImplementedError(f"{args.net} is not implemented! Please try vgg16/resnet18")
     model_pt_root = configs.model_pt_saved_root
     model_pt_path = os.path.join(model_pt_root, f"{model_name}.pt")
     logger = init_logging(os.path.join(configs.log_path, f"{model_name}.log"))
