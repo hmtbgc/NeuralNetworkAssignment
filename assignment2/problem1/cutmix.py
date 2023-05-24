@@ -67,8 +67,8 @@ def rand_bbox(size, lam):
     W = size[2]
     H = size[3]
     cut_rat = np.sqrt(1.0 - lam)
-    cut_w = np.int(W * cut_rat)
-    cut_h = np.int(H * cut_rat)
+    cut_w = int(W * cut_rat)
+    cut_h = int(H * cut_rat)
 
     # uniform
     cx = np.random.randint(W)
@@ -167,7 +167,7 @@ if __name__ == "__main__":
             rand_index = torch.randperm(data.shape[0]).to(device)
             label_a = label
             label_b = label[rand_index]
-            bbx1, bby1, bbx2, bby2 = rand_bbox(data.shape[0], lam)
+            bbx1, bby1, bbx2, bby2 = rand_bbox(data.shape, lam)
             data[:, :, bbx1:bbx2, bby1:bby2] = data[rand_index, :, bbx1:bbx2, bby1:bby2]
             lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (data.shape[-1] * data.shape[-2]))
             optimizer.zero_grad()

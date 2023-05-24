@@ -114,6 +114,16 @@ if __name__ == "__main__":
     else:
         raise NotImplementedError(f"{args.net} is not implemented! Please try vgg16/resnet18/mobilenetv2")
     model_pt_root = configs.model_pt_saved_root
+    data_argument_method = "baseline"
+    model_pt_root = os.path.join(model_pt_root, data_argument_method)
+    if not os.path.exists(model_pt_root):
+        os.mkdir(model_pt_root)
+    log_path = os.path.join(configs.log_path, data_argument_method)
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
+    tensorboard_log_path = os.path.join(configs.tensorboard_log_path, data_argument_method)
+    if not os.path.exists(tensorboard_log_path):
+        os.mkdir(tensorboard_log_path)
     model_pt_path = os.path.join(model_pt_root, f"{model_name}.pt")
     logger = init_logging(os.path.join(configs.log_path, f"{model_name}.log"))
     writer = SummaryWriter(os.path.join(configs.tensorboard_log_path, f"{model_name}"))
