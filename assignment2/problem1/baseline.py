@@ -68,6 +68,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     parser.add_argument("-net", type=str, required=True, help="net type", default="vgg16")
+    parser.add_argument("-device", type=str, required=True, default="cuda:0")
     args = parser.parse_args()
     
     transform_train = transforms.Compose([
@@ -97,7 +98,7 @@ if __name__ == "__main__":
     valid_dataloader = DataLoader(valid_dataset, batch_size=configs.valid_batch_size, shuffle=True, num_workers=4)
     test_dataloader = DataLoader(test_dataset, batch_size=configs.test_batch_size, shuffle=False, num_workers=4)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device(args.device)
     
     if args.net == "vgg16":
         model = VGG16(num_class=configs.num_class).to(device)
@@ -125,8 +126,8 @@ if __name__ == "__main__":
     if not os.path.exists(tensorboard_log_path):
         os.mkdir(tensorboard_log_path)
     model_pt_path = os.path.join(model_pt_root, f"{model_name}.pt")
-    logger = init_logging(os.path.join(configs.log_path, f"{model_name}.log"))
-    writer = SummaryWriter(os.path.join(configs.tensorboard_log_path, f"{model_name}"))
+    logger = init_logging(os.path.join(log_path, f"{model_name}.log"))
+    writer = SummaryWriter(os.path.join(tensorboard_log_path, f"{model_name}"))
     loss_fn = nn.CrossEntropyLoss().to(device)
     optimizer = SGD(model.parameters(), lr=configs.initial_lr, momentum=0.9, weight_decay=5e-4)
     warmup_scheduler = WarmUpLR(optimizer, configs.warmup_epoch * len(train_dataloader))

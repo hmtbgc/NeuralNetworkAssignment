@@ -21,16 +21,10 @@ class InvertedResidual(nn.Module):
             nn.BatchNorm2d(out_channels),
         )
         
-        if stride == 1:
-            self.shortcut = nn.Sequential(
-                nn.Conv2d(in_channels, out_channels, kernel_size=1),
-                nn.BatchNorm2d(out_channels),
-            )
-        
     def forward(self, x):
         out = self.layer(x)
-        if self.stride == 1:
-            out = (out + self.shortcut(x))
+        if self.stride == 1 and self.in_channels == self.out_channels:
+            out = out + x
         return out            
         
 class MobileNetV2(nn.Module):
