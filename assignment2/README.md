@@ -18,7 +18,7 @@ Top5 error
 | ResNet18  |7.47% |6.91%|7.23%|5.89%|
 |MobileNetV2|10.11%|9.64%|10.12%|11.43%|
 
-Ablation study
+#### Ablation study
 
 1. Mixup $\alpha$, Top1 error
 
@@ -35,4 +35,29 @@ Ablation study
 | VGG16  |26.82%  |26.70%|26.57%|
 | ResNet18  |22.60% |22.12%|22.19%|
 |MobileNetV2|35.86%|36.07%|36.34%|
+
+#### Visualization
+raw picture
+
+![](./problem1/test_pic/bird_re.jpg)
+![](./problem1/test_pic/cat_re.jpg)
+![](./problem1/test_pic/dog_re.jpg)
+
+cutout result
+
+![](./problem1/visualization/bird_cutout.png)
+![](./problem1/visualization/cat_cutout.png)
+![](./problem1/visualization/dog_cutout.png)
+
+mixup result
+
+![](./problem1/visualization/bird_mixup_cat.png)
+![](./problem1/visualization/cat_mixup_dog.png)
+![](./problem1/visualization/dog_mixup_bird.png)
+
+cutmix result
+
+![](./problem1/visualization/bird_cutmix_cat.png)
+![](./problem1/visualization/cat_cutmix_dog.png)
+![](./problem1/visualization/dog_cutmix_bird.png)
 
