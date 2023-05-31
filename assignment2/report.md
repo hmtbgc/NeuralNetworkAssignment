@@ -88,6 +88,110 @@ Conv(in, hidden, 1, 1, 0), BatchNorm2d(hidden), ReLU6, Conv(hidden, hidden, 3, s
 - Softmax -> Output
 
 ### 超参设置
+无特殊说明，以下超参为所有测试通用
+- batch size: 训练验证测试都是128。对每个epoch，都需要打乱训练集和验证集；测试集无需打乱。
+- learning rate: 学习率先从0开始线性warm up到0.1，该过程持续一个epoch，然后每训练50个epoch，学习率乘0.2。
+- optimizer: SGD，动量momentum为0.9，weight decay为5e-4。
+- epoch：共训练200个epoch。
+- loss function: CrossEntropyLoss
+- 评价指标：accuracy，top1-error(1 - accuracy)，top5-error (1 - ground truth出现在score前5的概率)
+- 验证频率：每2个epoch就进行一次验证集测试，以accuracy为是否保存模型参数的标准。
+
+### 数据增强方法
+#### Mixup($\alpha$)
+先从$\Beta(\alpha, \alpha)$分布中选取$\lambda$，然后混合两个样本：$\hat{x}=\lambda x_1+(1-\lambda)x_2$，损失函数也要混合：$l(\hat{x})=\lambda l(x_1)+(1-\lambda)l(x_2)$。验证和测试时无需混合样本。
+
+#### Cutout
+对输入图上随机位置挖去若干块边长为$k$的方形区域，并设置该区域的值为0。实验中，选取$k=8$，并且只挖去一块。验证和测试时无需修剪样本。
+
+#### Cutmix($\alpha$)
+先从$\Beta(\alpha, \alpha)$分布中选取$\lambda$，然后在图$x_1$上随机位置挖去一块大小为($\lfloor\sqrt{1-\lambda}w\rfloor, \lfloor\sqrt{1-\lambda}h\rfloor$)的矩形区域，并用另一张图片$x_2$对应区域的内容填充。记挖去区域大小与全图面积大小的比值为$\mu$，则混合后损失函数为$l=(1-\mu)l(x_1)+\mu l(x_2)$。验证和测试时无需混合样本。
+
+
+### 训练过程
+以backbone为ResNet的baseline为例，展示tensorboard结果：
+![](./problem1/tensorboard_log_pic/train_loss.png)
+![](./problem1/tensorboard_log_pic/valid_loss.png)
+![](./problem1/tensorboard_log_pic/valid_acc.png)
+![](./problem1/tensorboard_log_pic/top1-error.png)
+![](./problem1/tensorboard_log_pic/top5-error.png)
+
+其中损失函数骤降和accuracy骤升的原因是学习率下降(乘0.2)，避免了局部最优解。
+
+其余tensorboard结果可以通过如下方式获取：
+
+```shell
+# 先安装tensorboard：pip install tensorboard
+
+cd tensorboard_log
+tensorboard --logdir="./baseline/ResNet18" --port 6070
+
+# baseline 和 ResNet18 可以替换成该目录下其他文件夹名称
+
+# 最后打开浏览器，输入：
+localhost:6070
+```
+
+### 测试结果
+
+#### 不同backbone和数据增强方法的比较
+我们考虑四种情形：不加入数据增强(baseline)，Mixup(0.4)，Cutout，Cutmix(0.4)。实验结果如下：
+
+Top1 error
+|  Method  | Baseline  | Mixup($0.4$)|Cutout|Cutmix($0.4$)|
+|  ----  | ----  |----|----|----|
+| VGG16  | 29.32% |27.65%|29.49%|**26.70%**|
+| ResNet18  |24.39% |22.73%|24.72%|**22.12%**|
+|MobileNetV2|33.67%|**32.47%**|34.57%|36.07%|
+
+Top5 error
+|  Method  | Baseline  |Mixup ($0.4$)|Cutout|Cutmix($0.4$)|
+|  ----  | ----  |----|----|----|
+| VGG16  | 11.09% |9.36%|11.25%|**8.46%**|
+| ResNet18  |7.47% |6.91%|7.23%|**5.89%**|
+|MobileNetV2|10.11%|**9.64%**|10.12%|11.43%|
+
+针对不同的backbone，ResNet18表现的最好。在top1-error上，VGG16显著优于MobileNetV2；而在top5-error上，两者表现相近。
+
+针对不同的数据增强方法，Mixup和Cutmix都能超过baseline(除了Cutmix在MobileNetV2上表现不佳)，且CutMix普遍优于Mixup。而Cutout难以超越baseline，可能与挖去的方形区域大小有密切联系。
+
+#### 消融实验，针对不同的$\alpha$
+
+1. Mixup $\alpha$, Top1 error
+
+|  Method  | Mixup ($\alpha=0.2$) |Mixup ($\alpha=0.4$)|Mixup ($\alpha=0.6$)|
+|  ----  | ----  |----|----|
+| VGG16  | 27.66% |**27.65%**|28.00%|
+| ResNet18  | 23.86%|**22.73%**|23.76%|
+|MobileNetV2|33.09%|**32.47%**|33.82%|
+
+2. Cutmix $\alpha$, Top1 error
+
+|  Method  | Cutmix($\alpha=0.2$) |Cutmix($\alpha=0.4$)|Cutmix($\alpha=0.6$)|
+|  ----  | ----  |----|----|
+| VGG16  |26.82%  |26.70%|**26.57%**|
+| ResNet18  |22.60% |**22.12%**|22.19%|
+|MobileNetV2|**35.86%**|36.07%|36.34%|
+
+总的来说，$\alpha$的不同取值对两种数据增强算法的影响较小。
+
+#### 可视化三种数据增强算法
+raw picture
+
+![](./problem1/test_pic/bird_re.jpg)![](./problem1/test_pic/cat_re.jpg)![](./problem1/test_pic/dog_re.jpg)
+
+mixup result
+
+![](./problem1/visualization/bird_mixup_cat.png)![](./problem1/visualization/cat_mixup_dog.png)![](./problem1/visualization/dog_mixup_bird.png)
+
+cutout result
+
+![](./problem1/visualization/bird_cutout.png)![](./problem1/visualization/cat_cutout.png)![](./problem1/visualization/dog_cutout.png)
+
+cutmix result
+
+![](./problem1/visualization/bird_cutmix_cat.png)![](./problem1/visualization/cat_cutmix_dog.png)![](./problem1/visualization/dog_cutmix_bird.png)
+
 
 
 
