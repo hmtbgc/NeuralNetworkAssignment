@@ -1,4 +1,5 @@
 数据集：https://pan.baidu.com/s/1WsH1tpx3l4J-uiJcgSafrw 提取码：6fpf
+
 模型参数：https://pan.baidu.com/s/1-RLdy_0_s1dBDbKFCteUHg 提取码：3jml
 
 
@@ -14,13 +15,13 @@ mkdir model_pt
 # 把上述模型参数解压放置在model_pt文件夹下
 
 # 运行
-python baseline.py -net [vgg16/resnet18/mobilenetv2] -device [cuda:0] -type [train/test]
+python baseline.py -net [vgg16/resnet18/mobilenetv2] -device [cuda:0/cpu] -type [train/test]
 
-python mixup.py -net [vgg16/resnet18/mobilenetv2] -device [cuda:0] -type [train/test] -alpha [any float]
+python mixup.py -net [vgg16/resnet18/mobilenetv2] -device [cuda:0/cpu] -type [train/test] -alpha [any float]
 
-python cutout.py -net [vgg16/resnet18/mobilenetv2] -device [cuda:0] -type [train/test]
+python cutout.py -net [vgg16/resnet18/mobilenetv2] -device [cuda:0/cpu] -type [train/test]
 
-python cutmix.py -net [vgg16/resnet18/mobilenetv2] -device [cuda:0] -type [train/test] -alpha [any float]
+python cutmix.py -net [vgg16/resnet18/mobilenetv2] -device [cuda:0/cpu] -type [train/test] -alpha [any float]
 ```
 
 
