@@ -1,5 +1,10 @@
 # Assignment2 实验报告
 
+#### 龚畅（负责问题1、Faster-RCNN实验、报告书写汇总） 
+#### 郑锦龙（负责FCOS实验、报告书写） 
+#### 顾永翀（负责Faster-RCNN和FCOS报告书写）
+
+
 ## 问题1：图像分类
 ### 数据集介绍
 我们采用的是CIFAR-100数据集，该数据集包含100种类别，每种类别有600张大小为32×32的RGB图像。每张图片有粗粒度和细粒度的两种标签，前者有20类，后者有100类。在实验中，我们选取100类的标签。
@@ -191,6 +196,155 @@ cutout result
 cutmix result
 
 ![](./problem1/visualization/bird_cutmix_cat.png)![](./problem1/visualization/cat_cutmix_dog.png)![](./problem1/visualization/dog_cutmix_bird.png)
+
+
+## 问题2：目标检测
+
+### 数据集介绍
+
+VOC2007（Visual Object Classes Challenge 2007）是一个广泛应用于计算机视觉领域的数据集。它是PASCAL VOC（Pattern Analysis, Statistical Modeling, and Computational Learning Visual Object Classes）系列数据集之一，用于目标检测和图像分类任务。VOC2007数据集由20个常见的物体类别组成，每个类别在训练集和测试集中都有大约100张的标记图像。VOC2007数据集的图像都是真实世界的图像，具有真实场景的复杂性和多样性。图像尺寸不一，图像质量和拍摄条件也有所不同。每个图像都有相应的标注文件，提供了物体类别的标签以及物体边界框的位置信息。在目标检测任务中，VOC2007数据集被广泛用于评估算法的性能。
+
+### 数据划分
+![](./problem2/voc.jpg)
+上表总结了每个类和图像集的对象和图像的数量(至少包含一个给定类的对象)。数据被分成50%用于训练/验证，50%用于测试。在训练/验证集和测试集上，图像和对象的分类分布大致相等。总共有9963张图片，包含24640个带注释的对象。
+
+### Faster-RCNN
+
+#### 网络结构
+
+##### 1. Faster-RCNN整体流程
+Faster-RCNN是非常有效的两阶段目标检测算法，训练整个网络需要两个步骤：1.训练RPN网络，2.训练最关键的目标区域检测网络。相较于传统的检测算法，不需要额外的训练分类器和特征表示的过程，整个训练是端到端的。相较于传统算法，Faster-RCNN的准确率得到了大大提升，但速度相较于one-stage的方法慢一点。
+
+![](./problem2/faster_rcnn/../fasterrcnn/faster-rcnn1.jpg)![](./problem2/faster_rcnn/../fasterrcnn/faster-rcnn2.jpg)
+
+首先输入图片，对图片进行深度特征提取，得到feature map,然后通过RPN网络完成传统目标检测算法中滑动窗口所完成的任务（通过anchor生成候选区域），同时完成对候选区域的分类并且RPN网络会对目标的位置进行初步预测。然后通过ROI_Pooling层将候选区域进行一个进一步的位置准确的回归和修正，得到候选区域对应feature map上的对应区域特征，最后通过一个全连接层进一步对候选区域特征进行表示，进行分类和回归操作，来完成对候选区域类别的判断和位置精修。
+
+##### 2. Backbone
+本次实验以ResNet-50特征提取网络作为主干网络（backbone network）来发挥作用的。主干网络负责从输入图像中提取特征并为目标检测算法提供高层次的语义信息。
+
+ResNet-50 是一种经典的卷积神经网络结构，由多个卷积层、池化层和残差模块（residual modules）组成。它通过使用残差连接（residual connections）解决了深层网络训练中的梯度消失问题，使得网络可以更容易地训练和优化。ResNet-50 使用了50个卷积层，包括多个残差模块，以提取图像中的特征。在ResNet50网络中，存在两个基本的残差块，分别为Conv block和Identity block，其中Conv block输入和输出维度不一样，所以不能串联，它的作用是改变网络维度；Identity block输入和输出维度一样，可以串联，用于加深网络深度。
+
+在 Faster R-CNN 中，ResNet-50 作为主干网络用于提取输入图像的特征图。它将图像逐层通过卷积和池化操作，逐渐减小特征图的尺寸和维度。这些特征图在后续的区域提议网络（Region Proposal Network，RPN）和目标分类网络中被使用。
+
+##### 3. RPN
+RPN 网络是 Faster R-CNN 中的一个子网络，负责生成候选的目标区域提议。它基于主干网络（ResNet-50）提取的特征图，在特征图上滑动一个小的滑动窗口，通过该窗口提取出的特征，预测窗口是否包含目标以及相应的边界框回归信息。RPN 网络通过在特征图上生成anchor boxes来尝试覆盖各种可能的目标大小和宽高比。然后，根据锚框与真实目标框之间的重叠程度，计算锚框的目标得分，并选择得分高的anchor boxes作为目标区域提议proposals。
+
+##### 4. RoI Pooling
+RoI Pooling 是 Faster R-CNN 中用于从候选的目标区域提取固定大小的特征表示的操作。一旦 RPN 网络生成了候选目标区域，这些区域需要经过 RoI Pooling 进行处理。RoI Pooling 将每个候选区域划分为固定大小的子区域网格，并对每个子区域进行池化操作，以生成固定长度的特征向量。这种池化操作的目的是将不同大小的目标区域映射到相同的大小，以便后续的目标分类网络能够对这些特征进行处理。
+
+#### 超参设置
+目标检测模型里，主干特征提取部分所提取到的特征是通用的，把backbone冻结起来训练可以加快训练效率，也可以防止权值被破坏。
+
+冻结阶段训练参数
+- Init_Epoch         = 0
+- Freeze_Epoch      = 15
+- Freeze_batch_size   = 4
+  
+解冻阶段训练参数
+- UnFreeze_Epoch      = 15
+- Unfreeze_batch_size = 2
+
+可以加一个变量控制是否进行冻结训练
+- Freeze_Train       = True
+- learning rate: Init_lr = 1e-4; Min_lr = Init_lr * 0.01
+- optimizer: adam，动量momentum为0.9，weight decay为0。
+
+loss function
+```python
+def _fast_rcnn_loc_loss(self, pred_loc, gt_loc, gt_label, sigma):
+    pred_loc    = pred_loc[gt_label > 0]
+    gt_loc      = gt_loc[gt_label > 0]
+
+    sigma_squared = sigma ** 2
+    regression_diff = (gt_loc - pred_loc)
+    regression_diff = regression_diff.abs().float()
+    regression_loss = torch.where(
+            regression_diff < (1. / sigma_squared),
+            0.5 * sigma_squared * regression_diff ** 2,
+            regression_diff - 0.5 / sigma_squared
+        )
+    regression_loss = regression_loss.sum()
+    num_pos         = (gt_label > 0).sum().float()
+    
+    regression_loss /= torch.max(num_pos, torch.ones_like(num_pos))
+    return regression_loss
+```
+评价指标：mAP
+
+#### 检测结果可视化
+train/valid loss 曲线
+![](./problem2/fasterrcnn/epoch_loss.png)
+
+test mAP
+![](./problem2/fasterrcnn/mAP.png)
+
+在四张测试图上可视化第一阶段的proposal box
+![](./problem2/fasterrcnn/img_out/test1/car_proposal_box.jpg)![](./problem2/fasterrcnn/img_out/test1/child_proposal_box.jpg)
+![](./problem2/fasterrcnn/img_out/test1/street_proposal_box.jpg)![](./problem2/fasterrcnn/img_out/test1/multi-cat_proposal_box.jpg)
+
+在三张不在VOC数据集的图片上可视化最终检测结果
+![](./problem2/fasterrcnn/img_out/test2/carcar_detected.jpg)![](./problem2/fasterrcnn/img_out/test2/people_car_detected.jpg)
+![](./problem2/fasterrcnn/img_out/test2/family_detected.jpg)
+
+### FCOS
+
+#### 网络结构
+![](./problem2/fcos/fcos_structure.jpg)
+
+#### 超参设置
+- batch size 设为 16，不同GPU显存性能以及内存容量大小需要动态调整
+- learning rate： 初始学习率设为2e-3，并在训练过程中逐渐下降，最低为2e-5
+- optimizer：SGD，动量momentum为0.9，weight decay为1e-4
+- iteration设置为trainset的大小即1252次
+- epoch设置为30次，为了减少训练时间可以减少为15次等
+- 总体steps即global steps = iteration * epoch
+- loss function在loss.py文件中定义，有三个loss，分别是cls loss分类损失，采用交叉熵损失函数、cnt loss中心损失、和reg loss计算iou的损失函数，具体计算和定义在对应文件代码中有详细说明，此处不再赘述。
+
+#### 评价指标，检测/分割结果可视化
+利用Tensorboard/wandb都可以在训练测试过程中可视化。由于训练时间开销较大，训练一次周期时间较长，故只展示第一次训练结果后的可视化结果。
+
+- 类别置信度cls loss在每次steps上的损失曲线
+![](./problem2/fcos/loss_cls.jpg)
+- 中心点损失cnt loss 在每次steps上的损失曲线
+![](./problem2/fcos/loss_centerness.jpg)
+- 边框回归损失在每次steps上的损失曲线
+![](./problem2/fcos/loss_bbox.jpg)
+
+使用最优的模型测试mAP，结果如下：
+
+```shell
+all classes AP=====>
+
+ap for aeroplane is 0.8441736898990535
+ap for bicycle is 0.8548483158340914
+ap for bird is 0.8466045802312603
+ap for boat is 0.6972135403981374
+ap for bottle is 0.7103694686916038
+ap for bus is 0.8501735262043741
+ap for car is 0.9002597213383428
+ap for cat is 0.9244805562996358
+ap for chair is 0.5594776249373683
+ap for dog is 0.893042530759613
+ap for horse is 0.8515712361851174
+ap for motorbike is 0.8139772241540983
+ap for person is 0.8582499979503074
+ap for pottedplant is 0.4894317869119832
+ap for sheep is 0.8385244665159609
+ap for sofa is 0.7091702680052134
+ap for train is 0.871275366642313
+ap for tvmonitor is 0.8219499004097204
+mAP=====>0.792
+```
+
+使用10个epoch模型进行测试得到的mAP曲线：
+![](./problem2/fcos/fcos_mAP.jpg)
+
+可视化不在VOC数据集（coco数据集）的效果图：
+
+![](./problem2/fcos/1.jpg)
+![](./problem2/fcos/2.jpg)
+![](./problem2/fcos/3.jpg)
+
 
 
 
