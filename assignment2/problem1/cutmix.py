@@ -87,6 +87,7 @@ if __name__ == "__main__":
     parser.add_argument("-net", type=str, required=True, help="net type", default="vgg16")
     parser.add_argument("-alpha", type=float, required=True, default=1.0)
     parser.add_argument("-device", type=str, required=True, default="cuda:0")
+    parser.add_argument("-type", type=str, required=True, default="train")
     args = parser.parse_args()
     
     transform_train = transforms.Compose([
@@ -153,51 +154,52 @@ if __name__ == "__main__":
     
     best_valid_acc = 0.0
 
-    for epoch in range(configs.Epoch):
-        model.train()
-        epoch_loss = 0.0
-        if (epoch > configs.warmup_epoch):
-            train_scheduler.step(epoch)
-        for batch in tqdm(train_dataloader):
-            data, label = batch
-            data = data.to(device)
-            label = label.to(device)
-            
-            lam = np.random.beta(args.alpha, args.alpha)
-            rand_index = torch.randperm(data.shape[0]).to(device)
-            label_a = label
-            label_b = label[rand_index]
-            bbx1, bby1, bbx2, bby2 = rand_bbox(data.shape, lam)
-            data[:, :, bbx1:bbx2, bby1:bby2] = data[rand_index, :, bbx1:bbx2, bby1:bby2]
-            lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (data.shape[-1] * data.shape[-2]))
-            optimizer.zero_grad()
-            out = model(data)
-            loss = loss_fn(out, label_a) * lam + loss_fn(out, label_b) * (1.0 - lam)
-            loss.backward()
-            optimizer.step()
-            if (epoch <= configs.warmup_epoch):
-                warmup_scheduler.step()
-            epoch_loss += loss.item()
-        print(f"Epoch: {epoch}, loss:{epoch_loss / len(train_dataloader):.4f}")
-        logger.info(f"Epoch: {epoch}, loss:{epoch_loss / len(train_dataloader):.4f}")
-        writer.add_scalar("Train loss", epoch_loss / len(train_dataloader), epoch)
-        if ((epoch + 1) % configs.eval_every == 0):
-            valid_loss, acc, top1_err, top5_err = eval(valid_dataloader, model, loss_fn, device)              
-            if (acc > best_valid_acc):
-                best_valid_acc = acc
-                torch.save(model.state_dict(), os.path.join(model_pt_root, f"{model_name}.pt"))
-            print(f"Epoch: {epoch}, valid accuracy:{acc * 100:.2f}%, top1 error:{top1_err * 100:.2f}%, top5 error:{top5_err * 100:.2f}%, best valid accuracy:{best_valid_acc * 100:.2f}%")
-            logger.info(f"Epoch: {epoch}, valid accuracy:{acc * 100:.2f}%, top1 error:{top1_err * 100:.2f}%, top5 error:{top5_err * 100:.2f}%, best valid accuracy:{best_valid_acc * 100:.2f}%")
-            writer.add_scalar("Valid accuaray", acc, epoch)
-            writer.add_scalar("Valid top1 error", top1_err, epoch)
-            writer.add_scalar("Valid top5 error", top5_err, epoch)
-            writer.add_scalar("Valid loss", valid_loss, epoch)
-            
-    # testing...
-    test_model.load_state_dict(torch.load(model_pt_path))
-    _, test_acc, test_top1_err, test_top5_err = eval(test_dataloader, test_model, loss_fn, device)
-    print(f"test accuracy: {test_acc * 100:.2f}%, test top1 error: {test_top1_err * 100:.2f}%, test top5 error:{test_top5_err * 100:.2f}%")
-    logger.info(f"test accuracy: {test_acc * 100:.2f}%, test top1 error: {test_top1_err * 100:.2f}%, test top5 error:{test_top5_err * 100:.2f}%")
+    if (args.type == "train"):
+        for epoch in range(configs.Epoch):
+            model.train()
+            epoch_loss = 0.0
+            if (epoch > configs.warmup_epoch):
+                train_scheduler.step(epoch)
+            for batch in tqdm(train_dataloader):
+                data, label = batch
+                data = data.to(device)
+                label = label.to(device)
+                
+                lam = np.random.beta(args.alpha, args.alpha)
+                rand_index = torch.randperm(data.shape[0]).to(device)
+                label_a = label
+                label_b = label[rand_index]
+                bbx1, bby1, bbx2, bby2 = rand_bbox(data.shape, lam)
+                data[:, :, bbx1:bbx2, bby1:bby2] = data[rand_index, :, bbx1:bbx2, bby1:bby2]
+                lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (data.shape[-1] * data.shape[-2]))
+                optimizer.zero_grad()
+                out = model(data)
+                loss = loss_fn(out, label_a) * lam + loss_fn(out, label_b) * (1.0 - lam)
+                loss.backward()
+                optimizer.step()
+                if (epoch <= configs.warmup_epoch):
+                    warmup_scheduler.step()
+                epoch_loss += loss.item()
+            print(f"Epoch: {epoch}, loss:{epoch_loss / len(train_dataloader):.4f}")
+            logger.info(f"Epoch: {epoch}, loss:{epoch_loss / len(train_dataloader):.4f}")
+            writer.add_scalar("Train loss", epoch_loss / len(train_dataloader), epoch)
+            if ((epoch + 1) % configs.eval_every == 0):
+                valid_loss, acc, top1_err, top5_err = eval(valid_dataloader, model, loss_fn, device)              
+                if (acc > best_valid_acc):
+                    best_valid_acc = acc
+                    torch.save(model.state_dict(), os.path.join(model_pt_root, f"{model_name}.pt"))
+                print(f"Epoch: {epoch}, valid accuracy:{acc * 100:.2f}%, top1 error:{top1_err * 100:.2f}%, top5 error:{top5_err * 100:.2f}%, best valid accuracy:{best_valid_acc * 100:.2f}%")
+                logger.info(f"Epoch: {epoch}, valid accuracy:{acc * 100:.2f}%, top1 error:{top1_err * 100:.2f}%, top5 error:{top5_err * 100:.2f}%, best valid accuracy:{best_valid_acc * 100:.2f}%")
+                writer.add_scalar("Valid accuaray", acc, epoch)
+                writer.add_scalar("Valid top1 error", top1_err, epoch)
+                writer.add_scalar("Valid top5 error", top5_err, epoch)
+                writer.add_scalar("Valid loss", valid_loss, epoch)
+    else:
+        # testing...
+        test_model.load_state_dict(torch.load(model_pt_path))
+        _, test_acc, test_top1_err, test_top5_err = eval(test_dataloader, test_model, loss_fn, device)
+        print(f"test accuracy: {test_acc * 100:.2f}%, test top1 error: {test_top1_err * 100:.2f}%, test top5 error:{test_top5_err * 100:.2f}%")
+        logger.info(f"test accuracy: {test_acc * 100:.2f}%, test top1 error: {test_top1_err * 100:.2f}%, test top5 error:{test_top5_err * 100:.2f}%")
         
                 
 
