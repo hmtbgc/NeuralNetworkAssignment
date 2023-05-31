@@ -60,8 +60,8 @@ def proposal_box(model, image):
 
 if __name__ == "__main__":
     model = FRCNN()
-    dir_origin_path = "img/"
-    dir_save_path   = "img_out/"
+    dir_origin_path = "img/test1"
+    dir_save_path   = "img_out/test1"
     while True:
         img = input('Input image filename:')
         image = Image.open(os.path.join(dir_origin_path, f"{img}.jpg"))
