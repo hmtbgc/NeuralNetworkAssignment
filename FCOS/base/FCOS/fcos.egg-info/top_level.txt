@@ -1,2 +1,0 @@
-fcos
-fcos_core
