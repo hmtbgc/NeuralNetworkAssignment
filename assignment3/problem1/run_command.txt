@@ -1,0 +1,1 @@
+python self-supervised.py -out 128 -batch_size 256 -lr 0.001 -t 0.5 -epoch 500 -device cuda:3 -train_num 50000
