@@ -1,1 +1,7 @@
-python self-supervised.py -out 128 -batch_size 256 -lr 0.001 -t 0.5 -epoch 500 -device cuda:3 -train_num 50000
+python self-supervised.py -out 128 -batch_size 128 -lr 1e-3 -t 0.5 -epoch 100 -device cuda:3
+
+python linear_evaluation.py -batch_size 256 \
+-pretrained ./self-supervised_model_pt/2023-06-27-04:10:03-out_128#device_cuda:3#batch_size_128#lr_0.001#epoch_100#t_0.5#/checkpoint_100.pt \
+-device cuda:2 -lr 0.05 -epoch 100
+
+python supervised.py -batch_size 128 -device cuda:0 -lr 0.01 -epoch 100
