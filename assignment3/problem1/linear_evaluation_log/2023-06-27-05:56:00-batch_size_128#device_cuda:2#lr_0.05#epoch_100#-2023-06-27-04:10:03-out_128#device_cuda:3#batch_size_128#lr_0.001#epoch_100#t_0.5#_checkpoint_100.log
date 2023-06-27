@@ -1,0 +1,160 @@
+2023-06-27 05:56:29,713 - my_logger - INFO - epoch 0, loss:0.813
+2023-06-27 05:56:49,612 - my_logger - INFO - epoch 1, loss:0.760
+2023-06-27 05:57:09,894 - my_logger - INFO - epoch 2, loss:0.749
+2023-06-27 05:57:30,857 - my_logger - INFO - epoch 3, loss:0.739
+2023-06-27 05:57:50,724 - my_logger - INFO - epoch 4, loss:0.739
+2023-06-27 05:57:50,725 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 05:57:52,818 - my_logger - INFO - epoch 4, test accuracy: 79.74%
+2023-06-27 05:57:52,975 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 05:58:12,849 - my_logger - INFO - epoch 5, loss:0.732
+2023-06-27 05:58:32,148 - my_logger - INFO - epoch 6, loss:0.738
+2023-06-27 05:58:52,166 - my_logger - INFO - epoch 7, loss:0.730
+2023-06-27 05:59:10,970 - my_logger - INFO - epoch 8, loss:0.728
+2023-06-27 05:59:30,573 - my_logger - INFO - epoch 9, loss:0.729
+2023-06-27 05:59:30,574 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 05:59:32,470 - my_logger - INFO - epoch 9, test accuracy: 79.87%
+2023-06-27 05:59:32,593 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 05:59:51,833 - my_logger - INFO - epoch 10, loss:0.729
+2023-06-27 06:00:11,124 - my_logger - INFO - epoch 11, loss:0.728
+2023-06-27 06:00:30,297 - my_logger - INFO - epoch 12, loss:0.726
+2023-06-27 06:00:50,055 - my_logger - INFO - epoch 13, loss:0.727
+2023-06-27 06:01:09,244 - my_logger - INFO - epoch 14, loss:0.729
+2023-06-27 06:01:09,245 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:01:11,286 - my_logger - INFO - epoch 14, test accuracy: 80.14%
+2023-06-27 06:01:11,532 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:01:30,949 - my_logger - INFO - epoch 15, loss:0.726
+2023-06-27 06:01:50,545 - my_logger - INFO - epoch 16, loss:0.718
+2023-06-27 06:02:10,256 - my_logger - INFO - epoch 17, loss:0.723
+2023-06-27 06:02:30,076 - my_logger - INFO - epoch 18, loss:0.719
+2023-06-27 06:02:49,896 - my_logger - INFO - epoch 19, loss:0.728
+2023-06-27 06:02:49,897 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:02:51,981 - my_logger - INFO - epoch 19, test accuracy: 80.27%
+2023-06-27 06:02:52,107 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:03:11,934 - my_logger - INFO - epoch 20, loss:0.727
+2023-06-27 06:03:31,721 - my_logger - INFO - epoch 21, loss:0.725
+2023-06-27 06:03:52,138 - my_logger - INFO - epoch 22, loss:0.723
+2023-06-27 06:04:11,938 - my_logger - INFO - epoch 23, loss:0.721
+2023-06-27 06:04:31,546 - my_logger - INFO - epoch 24, loss:0.721
+2023-06-27 06:04:31,546 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:04:33,439 - my_logger - INFO - epoch 24, test accuracy: 79.54%
+2023-06-27 06:04:33,440 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:04:52,795 - my_logger - INFO - epoch 25, loss:0.721
+2023-06-27 06:05:12,573 - my_logger - INFO - epoch 26, loss:0.721
+2023-06-27 06:05:32,325 - my_logger - INFO - epoch 27, loss:0.718
+2023-06-27 06:05:51,545 - my_logger - INFO - epoch 28, loss:0.719
+2023-06-27 06:06:11,039 - my_logger - INFO - epoch 29, loss:0.715
+2023-06-27 06:06:11,041 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:06:13,252 - my_logger - INFO - epoch 29, test accuracy: 80.05%
+2023-06-27 06:06:13,253 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:06:33,100 - my_logger - INFO - epoch 30, loss:0.721
+2023-06-27 06:06:53,612 - my_logger - INFO - epoch 31, loss:0.722
+2023-06-27 06:07:12,909 - my_logger - INFO - epoch 32, loss:0.715
+2023-06-27 06:07:32,586 - my_logger - INFO - epoch 33, loss:0.716
+2023-06-27 06:07:52,641 - my_logger - INFO - epoch 34, loss:0.720
+2023-06-27 06:07:52,642 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:07:54,604 - my_logger - INFO - epoch 34, test accuracy: 80.56%
+2023-06-27 06:07:54,815 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:08:14,297 - my_logger - INFO - epoch 35, loss:0.713
+2023-06-27 06:08:34,244 - my_logger - INFO - epoch 36, loss:0.721
+2023-06-27 06:08:54,222 - my_logger - INFO - epoch 37, loss:0.709
+2023-06-27 06:09:13,916 - my_logger - INFO - epoch 38, loss:0.715
+2023-06-27 06:09:33,468 - my_logger - INFO - epoch 39, loss:0.715
+2023-06-27 06:09:33,469 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:09:35,457 - my_logger - INFO - epoch 39, test accuracy: 80.89%
+2023-06-27 06:09:35,745 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:09:55,589 - my_logger - INFO - epoch 40, loss:0.714
+2023-06-27 06:10:15,217 - my_logger - INFO - epoch 41, loss:0.718
+2023-06-27 06:10:35,527 - my_logger - INFO - epoch 42, loss:0.717
+2023-06-27 06:10:55,871 - my_logger - INFO - epoch 43, loss:0.712
+2023-06-27 06:11:15,450 - my_logger - INFO - epoch 44, loss:0.713
+2023-06-27 06:11:15,451 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:11:17,402 - my_logger - INFO - epoch 44, test accuracy: 81.24%
+2023-06-27 06:11:17,626 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:11:38,069 - my_logger - INFO - epoch 45, loss:0.715
+2023-06-27 06:11:58,168 - my_logger - INFO - epoch 46, loss:0.710
+2023-06-27 06:12:17,855 - my_logger - INFO - epoch 47, loss:0.713
+2023-06-27 06:12:37,416 - my_logger - INFO - epoch 48, loss:0.715
+2023-06-27 06:12:56,833 - my_logger - INFO - epoch 49, loss:0.711
+2023-06-27 06:12:56,834 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:12:58,623 - my_logger - INFO - epoch 49, test accuracy: 80.48%
+2023-06-27 06:12:58,623 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:13:17,757 - my_logger - INFO - epoch 50, loss:0.708
+2023-06-27 06:13:37,203 - my_logger - INFO - epoch 51, loss:0.717
+2023-06-27 06:13:57,587 - my_logger - INFO - epoch 52, loss:0.710
+2023-06-27 06:14:17,305 - my_logger - INFO - epoch 53, loss:0.708
+2023-06-27 06:14:36,702 - my_logger - INFO - epoch 54, loss:0.712
+2023-06-27 06:14:36,702 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:14:38,550 - my_logger - INFO - epoch 54, test accuracy: 80.11%
+2023-06-27 06:14:38,551 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:14:58,004 - my_logger - INFO - epoch 55, loss:0.712
+2023-06-27 06:15:17,361 - my_logger - INFO - epoch 56, loss:0.706
+2023-06-27 06:15:36,888 - my_logger - INFO - epoch 57, loss:0.704
+2023-06-27 06:15:56,051 - my_logger - INFO - epoch 58, loss:0.712
+2023-06-27 06:16:15,077 - my_logger - INFO - epoch 59, loss:0.706
+2023-06-27 06:16:15,079 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:16:16,945 - my_logger - INFO - epoch 59, test accuracy: 80.62%
+2023-06-27 06:16:16,946 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:16:36,413 - my_logger - INFO - epoch 60, loss:0.701
+2023-06-27 06:16:55,940 - my_logger - INFO - epoch 61, loss:0.711
+2023-06-27 06:17:15,593 - my_logger - INFO - epoch 62, loss:0.709
+2023-06-27 06:17:35,524 - my_logger - INFO - epoch 63, loss:0.705
+2023-06-27 06:17:55,645 - my_logger - INFO - epoch 64, loss:0.698
+2023-06-27 06:17:55,646 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:17:57,719 - my_logger - INFO - epoch 64, test accuracy: 80.60%
+2023-06-27 06:17:57,720 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:18:18,006 - my_logger - INFO - epoch 65, loss:0.699
+2023-06-27 06:18:37,876 - my_logger - INFO - epoch 66, loss:0.706
+2023-06-27 06:18:57,606 - my_logger - INFO - epoch 67, loss:0.704
+2023-06-27 06:19:18,248 - my_logger - INFO - epoch 68, loss:0.707
+2023-06-27 06:19:37,742 - my_logger - INFO - epoch 69, loss:0.705
+2023-06-27 06:19:37,743 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:19:39,572 - my_logger - INFO - epoch 69, test accuracy: 80.77%
+2023-06-27 06:19:39,573 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:19:58,994 - my_logger - INFO - epoch 70, loss:0.701
+2023-06-27 06:20:18,497 - my_logger - INFO - epoch 71, loss:0.704
+2023-06-27 06:20:39,134 - my_logger - INFO - epoch 72, loss:0.698
+2023-06-27 06:20:59,169 - my_logger - INFO - epoch 73, loss:0.701
+2023-06-27 06:21:18,825 - my_logger - INFO - epoch 74, loss:0.705
+2023-06-27 06:21:18,826 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:21:20,976 - my_logger - INFO - epoch 74, test accuracy: 81.05%
+2023-06-27 06:21:20,978 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:21:41,381 - my_logger - INFO - epoch 75, loss:0.701
+2023-06-27 06:22:01,480 - my_logger - INFO - epoch 76, loss:0.703
+2023-06-27 06:22:20,893 - my_logger - INFO - epoch 77, loss:0.700
+2023-06-27 06:22:40,857 - my_logger - INFO - epoch 78, loss:0.703
+2023-06-27 06:23:00,589 - my_logger - INFO - epoch 79, loss:0.693
+2023-06-27 06:23:00,589 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:23:02,522 - my_logger - INFO - epoch 79, test accuracy: 80.97%
+2023-06-27 06:23:02,523 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:23:21,571 - my_logger - INFO - epoch 80, loss:0.701
+2023-06-27 06:23:40,521 - my_logger - INFO - epoch 81, loss:0.699
+2023-06-27 06:23:59,913 - my_logger - INFO - epoch 82, loss:0.698
+2023-06-27 06:24:19,512 - my_logger - INFO - epoch 83, loss:0.696
+2023-06-27 06:24:38,701 - my_logger - INFO - epoch 84, loss:0.697
+2023-06-27 06:24:38,702 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:24:40,765 - my_logger - INFO - epoch 84, test accuracy: 80.86%
+2023-06-27 06:24:40,766 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:24:59,982 - my_logger - INFO - epoch 85, loss:0.696
+2023-06-27 06:25:19,689 - my_logger - INFO - epoch 86, loss:0.697
+2023-06-27 06:25:38,782 - my_logger - INFO - epoch 87, loss:0.699
+2023-06-27 06:25:58,063 - my_logger - INFO - epoch 88, loss:0.696
+2023-06-27 06:26:17,846 - my_logger - INFO - epoch 89, loss:0.701
+2023-06-27 06:26:17,847 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:26:19,917 - my_logger - INFO - epoch 89, test accuracy: 81.03%
+2023-06-27 06:26:19,918 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:26:39,597 - my_logger - INFO - epoch 90, loss:0.697
+2023-06-27 06:27:00,160 - my_logger - INFO - epoch 91, loss:0.698
+2023-06-27 06:27:21,022 - my_logger - INFO - epoch 92, loss:0.696
+2023-06-27 06:27:40,682 - my_logger - INFO - epoch 93, loss:0.693
+2023-06-27 06:28:00,994 - my_logger - INFO - epoch 94, loss:0.695
+2023-06-27 06:28:00,994 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:28:03,125 - my_logger - INFO - epoch 94, test accuracy: 80.93%
+2023-06-27 06:28:03,125 - my_logger - INFO - ################################# testing done ####################################
+2023-06-27 06:28:23,018 - my_logger - INFO - epoch 95, loss:0.700
+2023-06-27 06:28:43,662 - my_logger - INFO - epoch 96, loss:0.701
+2023-06-27 06:29:03,771 - my_logger - INFO - epoch 97, loss:0.698
+2023-06-27 06:29:23,648 - my_logger - INFO - epoch 98, loss:0.700
+2023-06-27 06:29:43,088 - my_logger - INFO - epoch 99, loss:0.699
+2023-06-27 06:29:43,089 - my_logger - INFO - ############################## testing... ############################
+2023-06-27 06:29:45,020 - my_logger - INFO - epoch 99, test accuracy: 80.68%
+2023-06-27 06:29:45,021 - my_logger - INFO - ################################# testing done ####################################
