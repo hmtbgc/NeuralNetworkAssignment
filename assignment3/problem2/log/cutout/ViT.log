@@ -1,0 +1,151 @@
+2023-06-28 07:58:06,876 - my_logger - INFO - Epoch: 0, loss:4.0847
+2023-06-28 07:58:40,729 - my_logger - INFO - Epoch: 1, loss:3.6102
+2023-06-28 07:58:43,352 - my_logger - INFO - Epoch: 1, valid accuracy:17.42%, top1 error:82.58%, top5 error:56.54%, best valid accuracy:17.42%
+2023-06-28 07:59:16,050 - my_logger - INFO - Epoch: 2, loss:3.3602
+2023-06-28 07:59:49,969 - my_logger - INFO - Epoch: 3, loss:3.2034
+2023-06-28 07:59:52,593 - my_logger - INFO - Epoch: 3, valid accuracy:22.20%, top1 error:77.80%, top5 error:49.34%, best valid accuracy:22.20%
+2023-06-28 08:00:26,061 - my_logger - INFO - Epoch: 4, loss:3.0881
+2023-06-28 08:00:59,749 - my_logger - INFO - Epoch: 5, loss:2.9890
+2023-06-28 08:01:02,570 - my_logger - INFO - Epoch: 5, valid accuracy:26.00%, top1 error:74.00%, top5 error:44.06%, best valid accuracy:26.00%
+2023-06-28 08:01:36,446 - my_logger - INFO - Epoch: 6, loss:2.9054
+2023-06-28 08:02:09,900 - my_logger - INFO - Epoch: 7, loss:2.8292
+2023-06-28 08:02:12,364 - my_logger - INFO - Epoch: 7, valid accuracy:27.96%, top1 error:72.04%, top5 error:41.36%, best valid accuracy:27.96%
+2023-06-28 08:02:46,092 - my_logger - INFO - Epoch: 8, loss:2.7642
+2023-06-28 08:03:19,616 - my_logger - INFO - Epoch: 9, loss:2.7016
+2023-06-28 08:03:23,000 - my_logger - INFO - Epoch: 9, valid accuracy:31.12%, top1 error:68.88%, top5 error:38.30%, best valid accuracy:31.12%
+2023-06-28 08:03:56,455 - my_logger - INFO - Epoch: 10, loss:2.6487
+2023-06-28 08:04:29,750 - my_logger - INFO - Epoch: 11, loss:2.5882
+2023-06-28 08:04:32,063 - my_logger - INFO - Epoch: 11, valid accuracy:32.16%, top1 error:67.84%, top5 error:37.14%, best valid accuracy:32.16%
+2023-06-28 08:05:05,491 - my_logger - INFO - Epoch: 12, loss:2.5379
+2023-06-28 08:05:39,054 - my_logger - INFO - Epoch: 13, loss:2.4842
+2023-06-28 08:05:41,579 - my_logger - INFO - Epoch: 13, valid accuracy:33.36%, top1 error:66.64%, top5 error:36.36%, best valid accuracy:33.36%
+2023-06-28 08:06:15,059 - my_logger - INFO - Epoch: 14, loss:2.4364
+2023-06-28 08:06:48,406 - my_logger - INFO - Epoch: 15, loss:2.3835
+2023-06-28 08:06:50,777 - my_logger - INFO - Epoch: 15, valid accuracy:35.74%, top1 error:64.26%, top5 error:34.28%, best valid accuracy:35.74%
+2023-06-28 08:07:24,581 - my_logger - INFO - Epoch: 16, loss:2.3397
+2023-06-28 08:07:58,109 - my_logger - INFO - Epoch: 17, loss:2.2984
+2023-06-28 08:08:01,007 - my_logger - INFO - Epoch: 17, valid accuracy:36.04%, top1 error:63.96%, top5 error:32.50%, best valid accuracy:36.04%
+2023-06-28 08:08:34,449 - my_logger - INFO - Epoch: 18, loss:2.2451
+2023-06-28 08:09:08,205 - my_logger - INFO - Epoch: 19, loss:2.1985
+2023-06-28 08:09:10,337 - my_logger - INFO - Epoch: 19, valid accuracy:37.26%, top1 error:62.74%, top5 error:32.26%, best valid accuracy:37.26%
+2023-06-28 08:09:43,653 - my_logger - INFO - Epoch: 20, loss:2.1682
+2023-06-28 08:10:17,327 - my_logger - INFO - Epoch: 21, loss:2.1240
+2023-06-28 08:10:19,817 - my_logger - INFO - Epoch: 21, valid accuracy:38.86%, top1 error:61.14%, top5 error:31.24%, best valid accuracy:38.86%
+2023-06-28 08:10:53,054 - my_logger - INFO - Epoch: 22, loss:2.0799
+2023-06-28 08:11:26,493 - my_logger - INFO - Epoch: 23, loss:2.0323
+2023-06-28 08:11:29,556 - my_logger - INFO - Epoch: 23, valid accuracy:39.90%, top1 error:60.10%, top5 error:30.52%, best valid accuracy:39.90%
+2023-06-28 08:12:03,312 - my_logger - INFO - Epoch: 24, loss:1.9947
+2023-06-28 08:12:36,952 - my_logger - INFO - Epoch: 25, loss:1.9523
+2023-06-28 08:12:39,512 - my_logger - INFO - Epoch: 25, valid accuracy:40.10%, top1 error:59.90%, top5 error:30.64%, best valid accuracy:40.10%
+2023-06-28 08:13:12,992 - my_logger - INFO - Epoch: 26, loss:1.9059
+2023-06-28 08:13:46,370 - my_logger - INFO - Epoch: 27, loss:1.8730
+2023-06-28 08:13:48,627 - my_logger - INFO - Epoch: 27, valid accuracy:41.10%, top1 error:58.90%, top5 error:29.14%, best valid accuracy:41.10%
+2023-06-28 08:14:22,422 - my_logger - INFO - Epoch: 28, loss:1.8297
+2023-06-28 08:14:56,104 - my_logger - INFO - Epoch: 29, loss:1.7862
+2023-06-28 08:14:58,214 - my_logger - INFO - Epoch: 29, valid accuracy:40.94%, top1 error:59.06%, top5 error:28.82%, best valid accuracy:41.10%
+2023-06-28 08:15:31,814 - my_logger - INFO - Epoch: 30, loss:1.7444
+2023-06-28 08:16:05,309 - my_logger - INFO - Epoch: 31, loss:1.7010
+2023-06-28 08:16:07,363 - my_logger - INFO - Epoch: 31, valid accuracy:42.00%, top1 error:58.00%, top5 error:29.20%, best valid accuracy:42.00%
+2023-06-28 08:16:40,903 - my_logger - INFO - Epoch: 32, loss:1.6580
+2023-06-28 08:17:14,368 - my_logger - INFO - Epoch: 33, loss:1.6224
+2023-06-28 08:17:16,967 - my_logger - INFO - Epoch: 33, valid accuracy:43.38%, top1 error:56.62%, top5 error:28.12%, best valid accuracy:43.38%
+2023-06-28 08:17:50,324 - my_logger - INFO - Epoch: 34, loss:1.5810
+2023-06-28 08:18:23,763 - my_logger - INFO - Epoch: 35, loss:1.5427
+2023-06-28 08:18:26,169 - my_logger - INFO - Epoch: 35, valid accuracy:43.26%, top1 error:56.74%, top5 error:28.10%, best valid accuracy:43.38%
+2023-06-28 08:18:59,305 - my_logger - INFO - Epoch: 36, loss:1.4933
+2023-06-28 08:19:32,919 - my_logger - INFO - Epoch: 37, loss:1.4644
+2023-06-28 08:19:35,114 - my_logger - INFO - Epoch: 37, valid accuracy:43.18%, top1 error:56.82%, top5 error:27.66%, best valid accuracy:43.38%
+2023-06-28 08:20:08,589 - my_logger - INFO - Epoch: 38, loss:1.4180
+2023-06-28 08:20:41,492 - my_logger - INFO - Epoch: 39, loss:1.3873
+2023-06-28 08:20:43,480 - my_logger - INFO - Epoch: 39, valid accuracy:42.44%, top1 error:57.56%, top5 error:28.56%, best valid accuracy:43.38%
+2023-06-28 08:21:17,139 - my_logger - INFO - Epoch: 40, loss:1.3403
+2023-06-28 08:21:50,698 - my_logger - INFO - Epoch: 41, loss:1.3115
+2023-06-28 08:21:53,041 - my_logger - INFO - Epoch: 41, valid accuracy:43.56%, top1 error:56.44%, top5 error:27.64%, best valid accuracy:43.56%
+2023-06-28 08:22:26,940 - my_logger - INFO - Epoch: 42, loss:1.2669
+2023-06-28 08:23:01,128 - my_logger - INFO - Epoch: 43, loss:1.2306
+2023-06-28 08:23:03,298 - my_logger - INFO - Epoch: 43, valid accuracy:43.56%, top1 error:56.44%, top5 error:27.36%, best valid accuracy:43.56%
+2023-06-28 08:23:36,798 - my_logger - INFO - Epoch: 44, loss:1.1866
+2023-06-28 08:24:10,143 - my_logger - INFO - Epoch: 45, loss:1.1548
+2023-06-28 08:24:12,525 - my_logger - INFO - Epoch: 45, valid accuracy:43.66%, top1 error:56.34%, top5 error:27.04%, best valid accuracy:43.66%
+2023-06-28 08:24:45,846 - my_logger - INFO - Epoch: 46, loss:1.1232
+2023-06-28 08:25:19,798 - my_logger - INFO - Epoch: 47, loss:1.0861
+2023-06-28 08:25:22,581 - my_logger - INFO - Epoch: 47, valid accuracy:44.06%, top1 error:55.94%, top5 error:27.78%, best valid accuracy:44.06%
+2023-06-28 08:25:56,144 - my_logger - INFO - Epoch: 48, loss:1.0548
+2023-06-28 08:26:30,158 - my_logger - INFO - Epoch: 49, loss:1.0195
+2023-06-28 08:26:32,799 - my_logger - INFO - Epoch: 49, valid accuracy:44.58%, top1 error:55.42%, top5 error:27.92%, best valid accuracy:44.58%
+2023-06-28 08:27:06,278 - my_logger - INFO - Epoch: 50, loss:0.9841
+2023-06-28 08:27:39,769 - my_logger - INFO - Epoch: 51, loss:0.9540
+2023-06-28 08:27:41,731 - my_logger - INFO - Epoch: 51, valid accuracy:43.44%, top1 error:56.56%, top5 error:28.22%, best valid accuracy:44.58%
+2023-06-28 08:28:15,140 - my_logger - INFO - Epoch: 52, loss:0.9260
+2023-06-28 08:28:48,734 - my_logger - INFO - Epoch: 53, loss:0.8893
+2023-06-28 08:28:50,581 - my_logger - INFO - Epoch: 53, valid accuracy:43.08%, top1 error:56.92%, top5 error:28.50%, best valid accuracy:44.58%
+2023-06-28 08:29:24,135 - my_logger - INFO - Epoch: 54, loss:0.8617
+2023-06-28 08:29:57,857 - my_logger - INFO - Epoch: 55, loss:0.8331
+2023-06-28 08:29:59,767 - my_logger - INFO - Epoch: 55, valid accuracy:44.30%, top1 error:55.70%, top5 error:27.56%, best valid accuracy:44.58%
+2023-06-28 08:30:33,553 - my_logger - INFO - Epoch: 56, loss:0.8023
+2023-06-28 08:31:07,576 - my_logger - INFO - Epoch: 57, loss:0.7829
+2023-06-28 08:31:10,082 - my_logger - INFO - Epoch: 57, valid accuracy:43.78%, top1 error:56.22%, top5 error:28.00%, best valid accuracy:44.58%
+2023-06-28 08:31:43,479 - my_logger - INFO - Epoch: 58, loss:0.7504
+2023-06-28 08:32:17,643 - my_logger - INFO - Epoch: 59, loss:0.7282
+2023-06-28 08:32:19,731 - my_logger - INFO - Epoch: 59, valid accuracy:43.72%, top1 error:56.28%, top5 error:28.18%, best valid accuracy:44.58%
+2023-06-28 08:32:53,234 - my_logger - INFO - Epoch: 60, loss:0.7064
+2023-06-28 08:33:26,836 - my_logger - INFO - Epoch: 61, loss:0.6813
+2023-06-28 08:33:28,902 - my_logger - INFO - Epoch: 61, valid accuracy:43.64%, top1 error:56.36%, top5 error:29.02%, best valid accuracy:44.58%
+2023-06-28 08:34:02,429 - my_logger - INFO - Epoch: 62, loss:0.6530
+2023-06-28 08:34:36,072 - my_logger - INFO - Epoch: 63, loss:0.6330
+2023-06-28 08:34:38,205 - my_logger - INFO - Epoch: 63, valid accuracy:43.44%, top1 error:56.56%, top5 error:28.32%, best valid accuracy:44.58%
+2023-06-28 08:35:12,138 - my_logger - INFO - Epoch: 64, loss:0.6133
+2023-06-28 08:35:45,708 - my_logger - INFO - Epoch: 65, loss:0.5941
+2023-06-28 08:35:48,930 - my_logger - INFO - Epoch: 65, valid accuracy:44.78%, top1 error:55.22%, top5 error:28.18%, best valid accuracy:44.78%
+2023-06-28 08:36:23,201 - my_logger - INFO - Epoch: 66, loss:0.5747
+2023-06-28 08:36:57,481 - my_logger - INFO - Epoch: 67, loss:0.5552
+2023-06-28 08:36:59,787 - my_logger - INFO - Epoch: 67, valid accuracy:44.00%, top1 error:56.00%, top5 error:28.48%, best valid accuracy:44.78%
+2023-06-28 08:37:33,608 - my_logger - INFO - Epoch: 68, loss:0.5309
+2023-06-28 08:38:08,503 - my_logger - INFO - Epoch: 69, loss:0.5199
+2023-06-28 08:38:10,762 - my_logger - INFO - Epoch: 69, valid accuracy:44.00%, top1 error:56.00%, top5 error:28.80%, best valid accuracy:44.78%
+2023-06-28 08:38:44,521 - my_logger - INFO - Epoch: 70, loss:0.4977
+2023-06-28 08:39:17,854 - my_logger - INFO - Epoch: 71, loss:0.4895
+2023-06-28 08:39:19,806 - my_logger - INFO - Epoch: 71, valid accuracy:44.12%, top1 error:55.88%, top5 error:27.42%, best valid accuracy:44.78%
+2023-06-28 08:39:53,349 - my_logger - INFO - Epoch: 72, loss:0.4748
+2023-06-28 08:40:26,784 - my_logger - INFO - Epoch: 73, loss:0.4546
+2023-06-28 08:40:29,649 - my_logger - INFO - Epoch: 73, valid accuracy:45.74%, top1 error:54.26%, top5 error:27.82%, best valid accuracy:45.74%
+2023-06-28 08:41:03,085 - my_logger - INFO - Epoch: 74, loss:0.4449
+2023-06-28 08:41:36,565 - my_logger - INFO - Epoch: 75, loss:0.4292
+2023-06-28 08:41:38,986 - my_logger - INFO - Epoch: 75, valid accuracy:44.06%, top1 error:55.94%, top5 error:28.38%, best valid accuracy:45.74%
+2023-06-28 08:42:12,449 - my_logger - INFO - Epoch: 76, loss:0.4110
+2023-06-28 08:42:46,372 - my_logger - INFO - Epoch: 77, loss:0.4027
+2023-06-28 08:42:48,840 - my_logger - INFO - Epoch: 77, valid accuracy:44.48%, top1 error:55.52%, top5 error:28.32%, best valid accuracy:45.74%
+2023-06-28 08:43:22,715 - my_logger - INFO - Epoch: 78, loss:0.3995
+2023-06-28 08:43:56,001 - my_logger - INFO - Epoch: 79, loss:0.3833
+2023-06-28 08:43:58,263 - my_logger - INFO - Epoch: 79, valid accuracy:44.66%, top1 error:55.34%, top5 error:28.58%, best valid accuracy:45.74%
+2023-06-28 08:44:31,666 - my_logger - INFO - Epoch: 80, loss:0.3730
+2023-06-28 08:45:05,421 - my_logger - INFO - Epoch: 81, loss:0.3602
+2023-06-28 08:45:08,328 - my_logger - INFO - Epoch: 81, valid accuracy:44.06%, top1 error:55.94%, top5 error:28.32%, best valid accuracy:45.74%
+2023-06-28 08:45:42,264 - my_logger - INFO - Epoch: 82, loss:0.3508
+2023-06-28 08:46:15,711 - my_logger - INFO - Epoch: 83, loss:0.3424
+2023-06-28 08:46:17,828 - my_logger - INFO - Epoch: 83, valid accuracy:45.06%, top1 error:54.94%, top5 error:27.86%, best valid accuracy:45.74%
+2023-06-28 08:46:51,671 - my_logger - INFO - Epoch: 84, loss:0.3155
+2023-06-28 08:47:25,506 - my_logger - INFO - Epoch: 85, loss:0.3126
+2023-06-28 08:47:27,759 - my_logger - INFO - Epoch: 85, valid accuracy:44.42%, top1 error:55.58%, top5 error:28.18%, best valid accuracy:45.74%
+2023-06-28 08:48:01,568 - my_logger - INFO - Epoch: 86, loss:0.3155
+2023-06-28 08:48:34,892 - my_logger - INFO - Epoch: 87, loss:0.3048
+2023-06-28 08:48:37,234 - my_logger - INFO - Epoch: 87, valid accuracy:44.44%, top1 error:55.56%, top5 error:28.22%, best valid accuracy:45.74%
+2023-06-28 08:49:11,095 - my_logger - INFO - Epoch: 88, loss:0.2941
+2023-06-28 08:49:44,983 - my_logger - INFO - Epoch: 89, loss:0.2861
+2023-06-28 08:49:47,095 - my_logger - INFO - Epoch: 89, valid accuracy:44.46%, top1 error:55.54%, top5 error:28.04%, best valid accuracy:45.74%
+2023-06-28 08:50:20,494 - my_logger - INFO - Epoch: 90, loss:0.2742
+2023-06-28 08:50:54,547 - my_logger - INFO - Epoch: 91, loss:0.2759
+2023-06-28 08:50:56,777 - my_logger - INFO - Epoch: 91, valid accuracy:44.90%, top1 error:55.10%, top5 error:29.08%, best valid accuracy:45.74%
+2023-06-28 08:51:30,698 - my_logger - INFO - Epoch: 92, loss:0.2664
+2023-06-28 08:52:04,508 - my_logger - INFO - Epoch: 93, loss:0.2618
+2023-06-28 08:52:07,209 - my_logger - INFO - Epoch: 93, valid accuracy:43.62%, top1 error:56.38%, top5 error:28.40%, best valid accuracy:45.74%
+2023-06-28 08:52:40,829 - my_logger - INFO - Epoch: 94, loss:0.2479
+2023-06-28 08:53:14,076 - my_logger - INFO - Epoch: 95, loss:0.2473
+2023-06-28 08:53:16,081 - my_logger - INFO - Epoch: 95, valid accuracy:44.10%, top1 error:55.90%, top5 error:28.54%, best valid accuracy:45.74%
+2023-06-28 08:53:49,711 - my_logger - INFO - Epoch: 96, loss:0.2442
+2023-06-28 08:54:23,310 - my_logger - INFO - Epoch: 97, loss:0.2354
+2023-06-28 08:54:25,363 - my_logger - INFO - Epoch: 97, valid accuracy:44.38%, top1 error:55.62%, top5 error:28.14%, best valid accuracy:45.74%
+2023-06-28 08:54:58,995 - my_logger - INFO - Epoch: 98, loss:0.2281
+2023-06-28 08:55:32,632 - my_logger - INFO - Epoch: 99, loss:0.2265
+2023-06-28 08:55:34,785 - my_logger - INFO - Epoch: 99, valid accuracy:44.64%, top1 error:55.36%, top5 error:28.30%, best valid accuracy:45.74%
+2023-06-29 06:48:59,555 - my_logger - INFO - test accuracy: 46.92%, test top1 error: 53.08%, test top5 error:25.98%
